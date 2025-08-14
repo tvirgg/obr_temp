@@ -8,20 +8,20 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-// -------- данные --------
-const sliderTop = [
-  { src: "/portfolio/01.jpg", alt: "Работа 1" },
-  { src: "/portfolio/02.jpg", alt: "Работа 2" },
-  { src: "/portfolio/03.jpg", alt: "Работа 3" },
-  { src: "/portfolio/04.jpg", alt: "Работа 4" },
-];
+// -------- ДАННЫЕ ДЛЯ СЛАЙДЕРОВ (генерируются автоматически) --------
 
-const sliderBottom = [
-  { src: "/portfolio/05.jpg", alt: "Работа 5" },
-  { src: "/portfolio/06.jpg", alt: "Работа 6" },
-  { src: "/portfolio/07.jpg", alt: "Работа 7" },
-  { src: "/portfolio/08.jpg", alt: "Работа 8" },
-];
+// ИЗМЕНЕНО: Указываем, что у нас 8 картинок, а не 10
+const livingSpacesSlides = Array.from({ length: 8 }, (_, i) => ({
+  src: `/portfolio/l_${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `Жилой интерьер ${i + 1}`,
+}));
+
+// ИЗМЕНЕНО: Указываем, что у нас 8 картинок, а не 10
+const publicSpacesSlides = Array.from({ length: 8 }, (_, i) => ({
+  src: `/portfolio/o_${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `Общественное пространство ${i + 1}`,
+}));
+
 
 export default function CasesMain() {
   return (
@@ -33,7 +33,7 @@ export default function CasesMain() {
 
         {/* ================== МОБИЛЬНАЯ ВЕРСТКА (< md) ================== */}
         <div className="md:hidden space-y-14">
-          {/* Ряд 1: стрелка слева, картинка вправо; одинаковый зазор 10px */}
+          {/* ----- СЛАЙДЕР 1: ЖИЛЫЕ ИНТЕРЬЕРЫ ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[4px]">
             <button
               className="top-prev--m w-[18px] h-[18px] justify-self-end mt-[-40px]"
@@ -42,7 +42,6 @@ export default function CasesMain() {
               <Image src="/arrow_l.svg" alt="" width={18} height={18} className="block" />
             </button>
 
-            {/* Слайдер 65vw, смещён в ПРАВЫЙ край */}
             <div className="min-w-0 w-[65vw] ml-[20px]">
               <Swiper
                 modules={[Navigation]}
@@ -50,7 +49,7 @@ export default function CasesMain() {
                 loop
                 className="w-full overflow-hidden"
               >
-                {sliderTop.map(({ src, alt }, i) => (
+                {livingSpacesSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative aspect-[4/2]">
                       <Image
@@ -68,18 +67,16 @@ export default function CasesMain() {
               <p className="mt-4 text-base">Жилые интерьеры</p>
             </div>
 
-            {/* правая кнопка скрыта, но ЯЧЕЙКА фиксированной ширины — для симметрии */}
             <button
-              className="top-next--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none  mt-[-40px]"
+              className="top-next--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none mt-[-40px]"
               aria-label="Следующий слайд"
             >
               <Image src="/arrow_r.svg" alt="" width={18} height={18} />
             </button>
           </div>
 
-          {/* Ряд 2: стрелка справа, картинка вправо; такой же зазор 10px */}
+          {/* ----- СЛАЙДЕР 2: ОБЩЕСТВЕННЫЕ ПРОСТРАНСТВА ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[10px] pt-[50px]">
-            {/* левая — скрыта, но место держим, чтобы отступы совпадали */}
             <button
               className="bottom-prev--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none"
               aria-label="Предыдущий слайд"
@@ -94,7 +91,7 @@ export default function CasesMain() {
                 loop
                 className="w-full overflow-hidden"
               >
-                {sliderBottom.map(({ src, alt }, i) => (
+                {publicSpacesSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative aspect-[4/2]">
                       <Image
@@ -121,7 +118,7 @@ export default function CasesMain() {
           </div>
         </div>
 
-        {/* ================== ДЕСКТОП/ПЛАНШЕТ (>= md) — без изменений ================== */}
+        {/* ================== ДЕСКТОП/ПЛАНШЕТ (>= md) ================== */}
         <div className="hidden md:grid md:grid-cols-2 md:grid-rows-2 gap-x-4 gap-y-16">
           <div className="relative hidden md:flex items-center justify-end pr-1">
             <button className="top-prev--d" aria-label="Предыдущий слайд">
@@ -136,7 +133,7 @@ export default function CasesMain() {
               loop
               className="w-full overflow-hidden"
             >
-              {sliderTop.map(({ src, alt }, i) => (
+              {livingSpacesSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
                   <div className="relative aspect-[4/2]">
                     <Image
@@ -166,7 +163,7 @@ export default function CasesMain() {
               loop
               className="w-full overflow-hidden"
             >
-              {sliderBottom.map(({ src, alt }, i) => (
+              {publicSpacesSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
                   <div className="relative aspect-[4/2]">
                     <Image

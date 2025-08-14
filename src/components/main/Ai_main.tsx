@@ -8,31 +8,33 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-// -------- медиа и тексты из второй компоненты --------
-const sliderTop = [
-  { src: "/ai/1.jpg", alt: "AI 1" },
-  { src: "/ai/2.jpg", alt: "AI 2" },
-  { src: "/ai/3.jpg", alt: "AI 3" },
-];
+// -------- ДАННЫЕ ДЛЯ СЛАЙДЕРОВ (генерируются автоматически из папки /ai) --------
 
-const sliderBottom = [
-  { src: "/ai/4.jpg", alt: "AI 4" },
-  { src: "/ai/5.jpg", alt: "AI 5" },
-];
+// Слайдер для ЖИЛЫХ помещений (файлы /ai/l_01.jpg, l_02.jpg, ...)
+const livingAiSlides = Array.from({ length: 10 }, (_, i) => ({
+  src: `/ai/l_${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `AI Жилой интерьер ${i + 1}`,
+}));
 
-export default function CasesMain() {
+// Слайдер для ОБЩЕСТВЕННЫХ пространств (файлы /ai/o_01.jpg, o_02.jpg, ...)
+const publicAiSlides = Array.from({ length: 10 }, (_, i) => ({
+  src: `/ai/o_${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `AI Общественное пространство ${i + 1}`,
+}));
+
+
+export default function AiCasesComponent() { // Рекомендую дать компоненту осмысленное имя
   return (
     <section className="bg-[#EBEAE8] text-[#171717] font-sans py-16 lg:py-24 overflow-x-hidden">
       <div className="max-w-7xl mx-auto lg:px-16 px-[30px]">
 
         {/* ================== МОБИЛЬНАЯ ВЕРСТКА (< md) ================== */}
         <div className="md:hidden space-y-14">
-          {/* Текстовый блок — ПЕРЕНЕСЁН НАВЕРХ */}
           <h3 className="text-[28px] font-thin leading-tight">
             Нейросеть для создания<br />дизайн-проектов
           </h3>
 
-          {/* Ряд 1 */}
+          {/* ----- СЛАЙДЕР 1: ЖИЛЫЕ ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[4px]">
             <button
               className="top-prev--m w-[18px] h-[18px] justify-self-end mt-[-40px]"
@@ -48,7 +50,7 @@ export default function CasesMain() {
                 loop
                 className="w-full overflow-hidden"
               >
-                {sliderTop.map(({ src, alt }, i) => (
+                {livingAiSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative aspect-[4/2]">
                       <Image
@@ -74,7 +76,7 @@ export default function CasesMain() {
             </button>
           </div>
 
-          {/* Ряд 2 */}
+          {/* ----- СЛАЙДЕР 2: ОБЩЕСТВЕННЫЕ ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[10px]">
             <button
               className="bottom-prev--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none"
@@ -90,7 +92,7 @@ export default function CasesMain() {
                 loop
                 className="w-full overflow-hidden"
               >
-                {sliderBottom.map(({ src, alt }, i) => (
+                {publicAiSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative aspect-[4/2]">
                       <Image
@@ -118,9 +120,8 @@ export default function CasesMain() {
         </div>
 
         {/* ================== ДЕСКТОП/ПЛАНШЕТ (>= md) ================== */}
-        {/* 3 колонки: [слайдер | стрелка | текст/слайдер] */}
         <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] gap-x-12 gap-y-16">
-          {/* Row 1 • Col 1 — верхний слайдер (слева) */}
+          {/* ----- СЛАЙДЕР 1: ЖИЛЫЕ ----- */}
           <div className="relative min-w-0">
             <Swiper
               modules={[Navigation]}
@@ -128,7 +129,7 @@ export default function CasesMain() {
               loop
               className="w-full overflow-hidden"
             >
-              {sliderTop.map(({ src, alt }, i) => (
+              {livingAiSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
                   <div className="relative aspect-[4/2]">
                     <Image
@@ -151,31 +152,27 @@ export default function CasesMain() {
             <p className="mt-4 text-3xl">Жилые интерьеры</p>
           </div>
 
-          {/* Row 1 • Col 2 — стрелка NEXT */}
           <div className="flex items-center justify-center">
             <button className="top-next--d cursor-pointer" aria-label="Следующий слайд">
               <Image src="/arrow_r.svg" alt="" width={32} height={32} className="object-contain" />
             </button>
           </div>
 
-          {/* Row 1 • Col 3 — текст */}
-          <div className="flex position-relative top-[-100px]">
-            <h3 className="text-[42px] leading-tight font-cruinn font-light">
+          <div className="flex relative top-[-100px] max-[1035px]:top-[-70px] justify-center">
+            <h3 className="text-[32px] min-[1035px]:text-[42px] leading-tight font-cruinn font-light">
               Нейросеть для создания<br />дизайн-проектов
             </h3>
           </div>
 
-          {/* Row 2 • Col 1 — пусто */}
           <div />
 
-          {/* Row 2 • Col 2 — стрелка PREV */}
           <div className="flex items-center justify-center">
             <button className="bottom-prev--d cursor-pointer" aria-label="Предыдущий слайд">
               <Image src="/arrow_l.svg" alt="" width={32} height={32} className="object-contain" />
             </button>
           </div>
 
-          {/* Row 2 • Col 3 — нижний слайдер */}
+          {/* ----- СЛАЙДЕР 2: ОБЩЕСТВЕННЫЕ ----- */}
           <div className="relative min-w-0">
             <Swiper
               modules={[Navigation]}
@@ -183,7 +180,7 @@ export default function CasesMain() {
               loop
               className="w-full overflow-hidden"
             >
-              {sliderBottom.map(({ src, alt }, i) => (
+              {publicAiSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
                   <div className="relative aspect-[4/2]">
                     <Image
