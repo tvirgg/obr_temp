@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* 1) Кастомные шрифты */
+@font-face {
+  font-family: 'Cruinn';
+  src: url('/fonts/CruinnLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cruinn';
+  src: url('/fonts/CruinnMedium.ttf') format('truetype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cruinn';
+  src: url('/fonts/CruinnBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doloman Pavljenko";
+  src: url("/fonts/DolomanPavljenko.otf") format("opentype");
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2) Удобные CSS-переменные для Tailwind arbitrary fonts */
+:root {
+  --font-doloman: "Doloman Pavljenko", sans-serif;
+  --font-cruinn: "Cruinn", sans-serif;
+
+  --background: #EBEAE8;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* 3) Базовая тема Tailwind (если используете @theme) */
+@theme {
+  --font-cruinn: "Cruinn", sans-serif;   /* добавь это */
+  --font-sans: var(--font-doloman);      /* как у тебя было */
+}
+
+/* 4) База для документа */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-doloman);
+  line-height: 1 !important;
+}

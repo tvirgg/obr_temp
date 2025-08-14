@@ -1,0 +1,57 @@
+# .gitignore (Единый файл для всего проекта)
+
+# 1. Зависимости и кеш-файлы
+# =================================
+node_modules/
+.pnpm-debug.log*
+.yarn/
+.pnp.*
+
+# 2. Фреймворки и артефакты сборки
+# =================================
+# Next.js (frontend)
+.next/
+out/
+
+# NestJS (backend)
+dist/
+
+# Общие
+build/
+coverage/
+
+# 3. Кеш Turborepo
+# =================================
+.turbo
+
+# 4. Файлы окружения (НИКОГДА не должны быть в Git)
+# =================================
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# 5. Логи
+# =================================
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 6. Системные и IDE-файлы
+# =================================
+.DS_Store
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
