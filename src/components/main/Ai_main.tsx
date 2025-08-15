@@ -37,7 +37,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
           {/* ----- СЛАЙДЕР 1: ЖИЛЫЕ ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[4px]">
             <button
-              className="top-prev--m w-[18px] h-[18px] justify-self-end mt-[-40px]"
+              className="top-prev--m w-[18px] h-[18px] justify-self-end mt-[-40px] cursor-pointer"
               aria-label="Предыдущий слайд"
             >
               <Image src="/arrow_l.svg" alt="" width={18} height={18} className="block" />
@@ -52,7 +52,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
               >
                 {livingAiSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
-                    <div className="relative aspect-[4/2]">
+                    <div className="relative aspect-[1280/720]">
                       <Image
                         src={src}
                         alt={alt}
@@ -69,7 +69,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
             </div>
 
             <button
-              className="top-next--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none mt-[-40px]"
+              className="top-next--m w-[28px] h-[28px] grid place-items-center mt-[-40px] cursor-pointer"
               aria-label="Следующий слайд"
             >
               <Image src="/arrow_r.svg" alt="" width={18} height={18} />
@@ -79,7 +79,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
           {/* ----- СЛАЙДЕР 2: ОБЩЕСТВЕННЫЕ ----- */}
           <div className="grid grid-cols-[28px_1fr_28px] items-center gap-x-[10px]">
             <button
-              className="bottom-prev--m w-[28px] h-[28px] grid place-items-center opacity-0 pointer-events-none"
+              className="bottom-prev--m w-[28px] h-[28px] grid place-items-center cursor-pointer"
               aria-label="Предыдущий слайд"
             >
               <Image src="/arrow_l.svg" alt="" width={18} height={18} />
@@ -94,7 +94,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
               >
                 {publicAiSlides.map(({ src, alt }, i) => (
                   <SwiperSlide key={i}>
-                    <div className="relative aspect-[4/2]">
+                    <div className="relative aspect-[1280/720]">
                       <Image
                         src={src}
                         alt={alt}
@@ -111,7 +111,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
             </div>
 
             <button
-              className="bottom-next--m w-[28px] h-[28px] grid place-items-center justify-self-start"
+              className="bottom-next--m w-[28px] h-[28px] grid place-items-center justify-self-start cursor-pointer"
               aria-label="Следующий слайд"
             >
               <Image src="/arrow_r.svg" alt="" width={18} height={18} />
@@ -131,7 +131,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
             >
               {livingAiSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
-                  <div className="relative aspect-[4/2]">
+                  <div className="relative aspect-[1280/720]">
                     <Image
                       src={src}
                       alt={alt}
@@ -145,7 +145,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
               ))}
             </Swiper>
             <button
-              className="top-prev--d opacity-0 pointer-events-none absolute"
+              className="top-prev--d cursor-pointer absolute"
               aria-label="Предыдущий слайд"
               style={{ inset: 0 }}
             />
@@ -182,7 +182,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
             >
               {publicAiSlides.map(({ src, alt }, i) => (
                 <SwiperSlide key={i}>
-                  <div className="relative aspect-[4/2]">
+                  <div className="relative aspect-[1280/720]">
                     <Image
                       src={src}
                       alt={alt}
@@ -196,7 +196,7 @@ export default function AiCasesComponent() { // Рекомендую дать к
               ))}
             </Swiper>
             <button
-              className="bottom-next--d opacity-0 pointer-events-none absolute"
+              className="bottom-next--d cursor-pointer absolute"
               aria-label="Следующий слайд"
               style={{ inset: 0 }}
             />

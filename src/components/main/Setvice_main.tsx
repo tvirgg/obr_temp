@@ -81,7 +81,7 @@ export default function Service_main() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#EBEAE8] text-[#171717] font-cruinn font-regular py-28 px-4 sm:px-8 lg:px-16">
+      <section className="relative overflow-hidden bg-[#EBEAE8] text-[#171717] font-cruinn py-28 px-4 sm:px-8 lg:px-16">
         <Image
           src="/circle_l.png"
           alt=""
@@ -91,11 +91,11 @@ export default function Service_main() {
           sizes="(min-width:980px) 65vw, 0px"
           className="hidden min-[980px]:block pointer-events-none absolute inset-y-0 left-0 h-full w-[65vw] object-contain object-left z-[1] select-none"
         />
-        <div className="relative z-[2] mx-auto max-w-5xl pl-0 min-[980px]:pl-[20%]">
+        <div className="relative z-[2] mx-auto max-w-5xl pl-0 min-[980px]:pl-[20%] font-cruinn font-medium">
           <h2 className="mb-16 leading-none text-center max-[980px]:text-[108px] min-[980px]:text-left min-[980px]:text-[160px]">
             услуги
           </h2>
-          <div className="grid grid-cols-1 gap-y-12 gap-x-16 min-[980px]:grid-cols-2">
+          <div className="grid grid-cols-1 gap-y-12 gap-x-16 min-[980px]:grid-cols-2 text-[20px]">
             
             {/* 1. Быстрые решения */}
             <article className="space-y-5 max-w-[560px] max-[980px]:w-[92%] max-[980px]:justify-self-start min-[980px]:order-1">
